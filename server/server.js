@@ -82,7 +82,7 @@ let shareArticle = function(req, res, postItems){
     
     ++ articleIDs[articleID].count;
     
-    newShareID = Math.random().toString(36).substring(2);
+    let newShareID = Math.random().toString(36).substring(2);
     data.shareID = newShareID;
     
     shareIDs[newShareID] = {
@@ -141,7 +141,7 @@ let startHttpServer = function(){
             postData += chunk;
         });
  
-        res.setHeader('Access-Control-Allow-Origin', 'https://read3.github.io/');
+        res.setHeader('Access-Control-Allow-Origin', 'https://read3.github.io');
         res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
         res.setHeader('Access-Control-Allow-Headers', '*');
         res.setHeader('Access-Control-Max-Age', '86400');

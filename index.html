@@ -58,11 +58,13 @@
 			theme: 'bubble'
 		});
         
-        $.post('/get', { 
+        $.post('https://li.tianqitu.net/get', { 
             shareID: location.hash.substring(1)
         },function(data){
             console.log(data);
-            //quill.setContents()
+            
+            if(data.error) return;
+            quill.setContents(JSON.parse(data.content));
         },'json');
         
         
@@ -71,7 +73,9 @@
             $.post('https://li.tianqitu.net/share', { 
                 shareID: location.hash.substring(1)
             },function(data){
-                console.log(data)
+                console.log(data);
+                if(data.error) return;
+                $('#address').text(data.shareID);
             },'json');
         
         });

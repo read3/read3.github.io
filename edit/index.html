@@ -60,7 +60,9 @@
             $.post('https://li.tianqitu.net/save', { 
                 content: JSON.stringify(quill.getContents())
             },function(data){
-                console.log(data)
+                console.log(data);
+                if(data.error) return;
+                $('#address').text(data.shareID);
             },'json');
         
         });
