@@ -62,7 +62,7 @@
             },function(data){
                 console.log(data);
                 if(data.error) return;
-                $('#address').text(data.shareID);
+                $('#address').text('https://read3.github.io/#'+data.shareID);
             },'json');
         
         });
