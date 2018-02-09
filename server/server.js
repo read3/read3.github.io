@@ -19,15 +19,7 @@ let writeAlertJsonInfo = function(req, res){
 let homepage = function(req, res){
 	res.writeHead(200, {'Content-Type':'text/html'});
 
-	//console.log(__dirname);
-	let rs = fs.createReadStream("./get6rh.html");
-
-	rs.pipe(res, {end:false});
-	rs.on('end', ()=>{
-
-		//writeAlertJsonInfo(req, res);
-		res.end();
-	});
+	res.end('hello');
 }
 
 let newItem = function(req, res, config){
@@ -45,6 +37,14 @@ const articleIDs = {}; //articleID: {content:, count:}
 let saveArticle = function(req, res, postItems){
 	res.writeHead(200, {'Content-Type':'application/json'});
     
+    let data = {shareID: '', error: 0};
+    
+    if(! postItems.content){
+        data.error = 1;
+        return res.end(JSON.stringify(data));
+    } 
+    
+    
     let articleID = Math.random().toString(36).substring(2);
     let shareID = Math.random().toString(36).substring(2);
     
@@ -59,8 +59,8 @@ let saveArticle = function(req, res, postItems){
         left: 3
     }
     
-    let data = {shareID: shareID};
-			
+    data.shareID = shareID;
+    		
     res.end(JSON.stringify(data));
 	
 }
@@ -72,7 +72,7 @@ let shareArticle = function(req, res, postItems){
     
     let shareID = postItems.shareID;
     
-    if(! shareID in shareIDs){
+    if(!(shareID &&  shareID in shareIDs)){
         data.error = 1;
         return res.end(JSON.stringify(data));
     } 
@@ -100,7 +100,7 @@ let getArticle = function(req, res, postItems){
     
     let shareID = postItems.shareID;
     
-    if(! shareID in shareIDs){
+    if(!(shareID &&  shareID in shareIDs)){
         data.error = 1;
         return res.end(JSON.stringify(data));
     } 
