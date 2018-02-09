@@ -45,10 +45,15 @@
 	<!-- Initialize Quill editor -->
 	<script>
 	$(function(){
+    
+        if(! location.hash) location.replace('https://read3.github.io/edit/');
+    
 		var quill = new Quill('#editor', {
 			readOnly: true,
 			theme: 'bubble'
 		});
+        
+        
 	})
 
 	</script>
