@@ -59,7 +59,7 @@
 		});
         
         $.post('/get', { 
-            shareID: location.hash.substring(1);
+            shareID: location.hash.substring(1)
         },function(data){
             console.log(data);
             //quill.setContents()
@@ -68,8 +68,8 @@
         
         $('#share').click(function(){
         
-            $.post('/share', { 
-                shareID: location.hash.substring(1);
+            $.post('https://li.tianqitu.net/share', { 
+                shareID: location.hash.substring(1)
             },function(data){
                 console.log(data)
             },'json');

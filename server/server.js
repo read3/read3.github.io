@@ -141,7 +141,10 @@ let startHttpServer = function(){
             postData += chunk;
         });
  
-			
+        res.setHeader('Access-Control-Allow-Origin', 'https://read3.github.io/');
+        res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
+        res.setHeader('Access-Control-Allow-Headers', '*');
+        res.setHeader('Access-Control-Max-Age', '86400');
         
 		if( pathname === '/' ){
 			homepage(req, res);
