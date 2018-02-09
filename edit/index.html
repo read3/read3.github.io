@@ -33,6 +33,11 @@
 		  <p>Hello World!</p>
 		  <p><br></p>
 		</div>
+        
+        <div class="row">
+            <div class="col-md-4"><button id='share' type="button" class="btn btn-primary">Share</button></div>
+            <div class="col-md-8"><div id='address' class="alert alert-info" role="alert"></div></div>
+        </div>
 	</div>
 
 
@@ -49,6 +54,16 @@
 		var quill = new Quill('#editor', {
 			theme: 'snow'
 		});
+        
+        $('#share').click(function(){
+        
+            $.post('/save', { 
+                content: JSON.stringify(quill.getContents());
+            },function(data){
+                console.log(data)
+            },'json');
+        
+        });
 	})
 
 	</script>

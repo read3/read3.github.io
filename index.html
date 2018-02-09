@@ -32,6 +32,11 @@
 		  <p>Hello World!</p>
 		  <p><br></p>
 		</div>
+        
+        <div class="row">
+            <div class="col-md-4"><button id='share' type="button" class="btn btn-primary">Share</button></div>
+            <div class="col-md-8"><div id='address' class="alert alert-info" role="alert"></div></div>
+        </div>
 	</div>
 
 
@@ -53,7 +58,23 @@
 			theme: 'bubble'
 		});
         
+        $.post('/get', { 
+            shareID: location.hash.substring(1);
+        },function(data){
+            console.log(data);
+            //quill.setContents()
+        },'json');
         
+        
+        $('#share').click(function(){
+        
+            $.post('/share', { 
+                shareID: location.hash.substring(1);
+            },function(data){
+                console.log(data)
+            },'json');
+        
+        });
 	})
 
 	</script>
