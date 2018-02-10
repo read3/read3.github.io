@@ -5,8 +5,6 @@ const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
 
-//const get6 = require('./get6.js');
-
 
 let writeAlertJsonInfo = function(req, res){
 	
@@ -96,7 +94,7 @@ let shareArticle = function(req, res, postItems){
 let getArticle = function(req, res, postItems){
 	res.writeHead(200, {'Content-Type':'application/json'});
     
-    let data = {content: '', error: 0};
+    let data = {content: '', error: 0, count: 0};
     
     let shareID = postItems.shareID;
     
@@ -107,12 +105,13 @@ let getArticle = function(req, res, postItems){
     
     
     let articleID = shareIDs[shareID].articleID;
-    
-    data.content = articleIDs[articleID].content;
-    res.end(JSON.stringify(data));
-    
-    
+
     let left = -- shareIDs[shareID].left;
+    
+    data.count = 3 - left;
+    data.content = articleIDs[articleID].content;
+    
+    res.end(JSON.stringify(data));
     
     if(left === 0){
         delete shareIDs[shareID];

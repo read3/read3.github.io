@@ -88,6 +88,7 @@
                 console.log(data);
                 if(data.error) return;
                 $('#address').text('https://read3.github.io/#'+data.shareID).removeClass('hidden');
+                document.title = '('+ data.count +')Read article 3 times';
             },'json');
         
         });
