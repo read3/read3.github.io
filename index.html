@@ -46,7 +46,7 @@
 		</div>
         
         <div class="row" id='share-section'><!-- <div class="col-sm-2 col-md-2"></div> -->
-            <button id='share' type="button" class="btn btn-primary">Share</button>
+            <button id='share' type="button" class="btn btn-primary hidden">Share</button>
             <div class="col-sm-10 col-md-6"><div id='address' class="alert alert-info hidden" role="alert">https://read3.github.io/#hqyobhjyhv9ornhla837n9udi</div></div>
         </div>
 	</div>
@@ -78,6 +78,7 @@
             if(data.error) return;
             quill.setContents(JSON.parse(data.content));
             document.title = '( '+ data.count +' )Read article 3 times';
+            if(data.count < 3) $('#share').removeClass('hidden');
         },'json');
         
         
