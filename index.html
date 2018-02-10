@@ -19,7 +19,19 @@
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
 	<style type="text/css">
-
+        #share-section {        
+            margin-top: 20px;
+        }
+        
+        #share {
+            padding: 8px 30px;
+            float: left;
+            margin-left: 15px;
+        }
+        
+        #address {
+            padding: 8px 10px;
+        }
 	</style>
 
 
@@ -33,9 +45,9 @@
 		  <p><br></p>
 		</div>
         
-        <div class="row">
-            <div class="col-md-4"><button id='share' type="button" class="btn btn-primary">Share</button></div>
-            <div class="col-md-8"><div id='address' class="alert alert-info" role="alert"></div></div>
+        <div class="row" id='share-section'><!-- <div class="col-sm-2 col-md-2"></div> -->
+            <button id='share' type="button" class="btn btn-primary">Share</button>
+            <div class="col-sm-10 col-md-6"><div id='address' class="alert alert-info hidden" role="alert">https://read3.github.io/#hqyobhjyhv9ornhla837n9udi</div></div>
         </div>
 	</div>
 
@@ -75,7 +87,7 @@
             },function(data){
                 console.log(data);
                 if(data.error) return;
-                $('#address').text('https://read3.github.io/#'+data.shareID);
+                $('#address').text('https://read3.github.io/#'+data.shareID).removeClass('hidden');
             },'json');
         
         });
