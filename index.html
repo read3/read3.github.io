@@ -87,7 +87,7 @@
 			
 			var title = '( '+ data.count +' )Read article 3 times';
             document.title = title;
-			$('#title') = title;
+			$('#title').text( title );
             if(data.count < 3) $('#share-section').removeClass('hidden');
         },'json');
         
