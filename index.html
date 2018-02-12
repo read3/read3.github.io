@@ -85,7 +85,7 @@
             if(data.error) return;
             quill.setContents(JSON.parse(data.content));
 			
-			var title = '( '+ data.count +' )Read article 3 times';
+			var title = 'Read article ' + data.count +'(of 3) times';
             document.title = title;
 			$('#title').text( title );
             if(data.count < 3) $('#share-section').removeClass('hidden');
