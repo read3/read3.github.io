@@ -43,6 +43,9 @@
 
 <body>
 	<div class="container article">
+		<div class="page-header">
+			<h2 id='title'>Read article 3 times</h2>
+		</div>
 		<!-- Create the editor container -->
 		<div id="editor">
 		  <p>Hello World!</p>
@@ -81,7 +84,10 @@
             
             if(data.error) return;
             quill.setContents(JSON.parse(data.content));
-            document.title = '( '+ data.count +' )Read article 3 times';
+			
+			var title = '( '+ data.count +' )Read article 3 times';
+            document.title = title;
+			$('#title') = title;
             if(data.count < 3) $('#share-section').removeClass('hidden');
         },'json');
         
