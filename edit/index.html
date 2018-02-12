@@ -20,7 +20,9 @@
 
 	<style type="text/css">
         #share-section {        
-            margin-top: 20px;
+            margin: 20px 0px;
+			/* border-top: 1px solid #eee; */
+			padding-top: 9px;
         }
         
         #share {
@@ -31,6 +33,8 @@
         
         #address {
             padding: 8px 10px;
+			float: left;
+			margin-left: 15px;
         }
 	</style>
 
@@ -48,7 +52,7 @@
         
         <div class="row" id='share-section'><!-- <div class="col-sm-2 col-md-2"></div> -->
             <button id='share' type="button" class="btn btn-primary">Share</button>
-            <div class="col-sm-10 col-md-6"><div id='address' class="alert alert-info hidden" role="alert">https://read3.github.io/#hqyobhjyhv9ornhla837n9udi</div></div>
+            <div id='address' class="alert alert-info hidden" role="alert"><a href='https://read3.github.io/#hqyobhjyhv9ornhla837n9udi' target="_blank">https://read3.github.io/#hqyobhjyhv9ornhla837n9udi</a></div>
         </div>
 	</div>
 
@@ -74,7 +78,10 @@
             },function(data){
                 console.log(data);
                 if(data.error) return;
-                $('#address').text('https://read3.github.io/#'+data.shareID).removeClass('hidden');
+                
+				var address = 'https://read3.github.io/#'+data.shareID;
+				$('#address a').attr('href', address).text(address);
+                $('#address').removeClass('hidden');
             },'json');
         
         });
