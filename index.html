@@ -93,7 +93,10 @@
             },function(data){
                 console.log(data);
                 if(data.error) return;
-                $('#address').text('https://read3.github.io/#'+data.shareID).removeClass('hidden');
+				
+				var address = 'https://read3.github.io/#'+data.shareID;
+				$('#address a').attr('href', address).text(address);
+                $('#address').removeClass('hidden');
                 
             },'json');
         
